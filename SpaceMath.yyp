@@ -53,6 +53,24 @@
     },
     {
       "id": {
+        "name": "scr_flight_draw",
+        "path": "scripts/scr_flight_draw/scr_flight_draw.yy",
+      }
+    },
+    {
+      "id": {
+        "name": "scr_flight_start_run",
+        "path": "scripts/scr_flight_start_run/scr_flight_start_run.yy",
+      }
+    },
+    {
+      "id": {
+        "name": "scr_flight_update",
+        "path": "scripts/scr_flight_update/scr_flight_update.yy",
+      }
+    },
+    {
+      "id": {
         "name": "scr_ui_draw_button",
         "path": "scripts/scr_ui_draw_button/scr_ui_draw_button.yy",
       }

@@ -1,10 +1,24 @@
+var step_seconds = delta_time / 1000000;
+background_animation_time += step_seconds;
+
 if (transition_phase == 1) {
     transition_alpha = min(1, transition_alpha + 0.12);
 
     if (transition_alpha >= 1) {
+        var previous_scene = scene;
         scene = transition_target;
+        if ((previous_scene == "flight" || previous_scene == "countdown")
+            && (scene == "flight_result" || scene == "menu")) {
+            ds_list_destroy(flight.meteors);
+            flight.meteors = -1;
+            ds_list_destroy(flight.explosions);
+            flight.explosions = -1;
+        }
         if (scene == "lab") {
             lab_dialogue_index = 0;
+        }
+        if (scene == "instructions") {
+            instructions_elapsed = 0;
         }
         transition_phase = 2;
         selection = 0;
@@ -46,6 +60,34 @@ if (scene == "lab") {
             transition_target = "math";
             transition_phase = 1;
         }
+    }
+
+    exit;
+}
+
+if (scene == "instructions") {
+    instructions_elapsed += step_seconds;
+    if (keyboard_check_pressed(vk_escape)) {
+        transition_target = "difficulty";
+        transition_phase = 1;
+    } else if (keyboard_check_pressed(vk_enter)
+        || keyboard_check_pressed(vk_space)
+        || mouse_check_button_pressed(mb_left)
+        || instructions_elapsed >= 10) {
+        transition_target = "lab";
+        transition_phase = 1;
+    }
+
+    exit;
+}
+
+if (scene == "credits") {
+    if (keyboard_check_pressed(vk_enter)
+        || keyboard_check_pressed(vk_space)
+        || keyboard_check_pressed(vk_escape)
+        || mouse_check_button_pressed(mb_left)) {
+        transition_target = "menu";
+        transition_phase = 1;
     }
 
     exit;
@@ -141,22 +183,136 @@ if (scene == "math_results") {
     var gui_height = display_get_gui_height();
     var mouse_x_gui = device_mouse_x_to_gui(0);
     var mouse_y_gui = device_mouse_y_to_gui(0);
-    var clicked_menu = mouse_check_button_pressed(mb_left)
+    var clicked_start = mouse_check_button_pressed(mb_left)
         && abs(mouse_x_gui - gui_width * 0.5) <= 155
         && abs(mouse_y_gui - gui_height * 0.79) <= 24;
+
+    if (keyboard_check_pressed(vk_escape)) {
+        transition_target = "menu";
+        transition_phase = 1;
+    } else if (keyboard_check_pressed(vk_enter)
+        || keyboard_check_pressed(vk_space)
+        || clicked_start) {
+        flight = scr_flight_start_run(math_run);
+        if (flight.outcome != "") {
+            ds_list_destroy(flight.meteors);
+            flight.meteors = -1;
+            transition_target = "flight_result";
+        } else {
+            countdown_seconds = 3;
+            transition_target = "countdown";
+        }
+        transition_phase = 1;
+    }
+    exit;
+}
+
+if (scene == "countdown") {
+    if (keyboard_check_pressed(vk_escape)) {
+        transition_target = "menu";
+        transition_phase = 1;
+    } else {
+        countdown_seconds = max(0, countdown_seconds - delta_time / 1000000);
+        if (countdown_seconds <= 0) {
+            transition_target = "flight";
+            transition_phase = 1;
+        }
+    }
+    exit;
+}
+
+if (scene == "flight") {
+    if (keyboard_check_pressed(vk_escape)) {
+        transition_target = "menu";
+        transition_phase = 1;
+    } else {
+        scr_flight_update(flight, delta_time / 1000000);
+        if (flight.outcome != "") {
+            transition_target = "flight_result";
+            transition_phase = 1;
+        }
+    }
+    exit;
+}
+
+if (scene == "flight_result") {
+    var gui_width = display_get_gui_width();
+    var gui_height = display_get_gui_height();
+    var button_count = flight.outcome == "victory" ? 3 : 2;
+    var button_x = [];
+    var button_y = gui_height * 0.84;
+    var button_width = button_count == 3 ? 310 : 340;
+    var mouse_x_gui = device_mouse_x_to_gui(0);
+    var mouse_y_gui = device_mouse_y_to_gui(0);
+    var clicked_button = -1;
+
+    if (button_count == 3) {
+        button_x = [gui_width * 0.20, gui_width * 0.50, gui_width * 0.80];
+    } else {
+        button_x = [gui_width * 0.35, gui_width * 0.65];
+    }
+
+    if (keyboard_check_pressed(vk_left) || keyboard_check_pressed(vk_up)) {
+        selection = (selection + button_count - 1) % button_count;
+    } else if (keyboard_check_pressed(vk_right) || keyboard_check_pressed(vk_down)) {
+        selection = (selection + 1) % button_count;
+    }
+
+    if (mouse_check_button_pressed(mb_left)) {
+        for (var i = 0; i < button_count; i += 1) {
+            if (abs(mouse_x_gui - button_x[i]) <= button_width * 0.5
+                && abs(mouse_y_gui - button_y) <= 24) {
+                clicked_button = i;
+            }
+        }
+    }
+
+    if (clicked_button >= 0) {
+        selection = clicked_button;
+    }
+
+    if (keyboard_check_pressed(vk_escape)) {
+        transition_target = "menu";
+        transition_phase = 1;
+    } else if (keyboard_check_pressed(vk_enter)
+        || keyboard_check_pressed(vk_space)
+        || clicked_button >= 0) {
+        if (selection == 0) {
+            lab_dialogue_index = 0;
+            transition_target = "lab";
+        } else if (flight.outcome == "victory" && selection == 1) {
+            transition_target = "history";
+        } else {
+            transition_target = "menu";
+        }
+        transition_phase = 1;
+    }
+    exit;
+}
+
+if (scene == "history") {
+    var gui_width = display_get_gui_width();
+    var gui_height = display_get_gui_height();
+    var mouse_x_gui = device_mouse_x_to_gui(0);
+    var mouse_y_gui = device_mouse_y_to_gui(0);
+    var clicked_back = mouse_check_button_pressed(mb_left)
+        && abs(mouse_x_gui - gui_width * 0.5) <= 180
+        && abs(mouse_y_gui - gui_height * 0.88) <= 24;
 
     if (keyboard_check_pressed(vk_enter)
         || keyboard_check_pressed(vk_space)
         || keyboard_check_pressed(vk_escape)
-        || clicked_menu) {
-        transition_target = "menu";
+        || clicked_back) {
+        transition_target = "flight_result";
         transition_phase = 1;
     }
     exit;
 }
 
 var option_count = 0;
-if (scene == "menu" || scene == "difficulty") {
+if (scene == "menu") {
+    option_count = 2;
+} else if (scene == "difficulty") {
     option_count = 3;
 }
 
@@ -198,9 +354,6 @@ if (option_count > 0) {
             if (selection == 0) {
                 transition_target = "difficulty";
                 transition_phase = 1;
-            } else if (selection == 1) {
-                transition_target = "instructions";
-                transition_phase = 1;
             } else {
                 transition_target = "credits";
                 transition_phase = 1;
@@ -209,12 +362,12 @@ if (option_count > 0) {
             if (selection == 0) {
                 selected_difficulty = "easy";
                 global.game_difficulty = selected_difficulty;
-                transition_target = "lab";
+                transition_target = "instructions";
                 transition_phase = 1;
             } else if (selection == 1) {
                 selected_difficulty = "medium";
                 global.game_difficulty = selected_difficulty;
-                transition_target = "lab";
+                transition_target = "instructions";
                 transition_phase = 1;
             } else {
                 transition_target = "menu";

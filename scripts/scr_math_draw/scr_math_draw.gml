@@ -8,21 +8,35 @@ function scr_math_draw() {
     var board_top = gui_height * 0.12;
     var board_width = gui_width * 0.82;
     var board_bottom = gui_height * 0.66;
+    var background_time = background_animation_time;
 
     draw_set_alpha(1);
     draw_set_color(make_color_rgb(7, 14, 33));
     draw_rectangle(0, 0, gui_width, gui_height, false);
 
+    draw_set_alpha(0.06);
+    draw_set_color(make_color_rgb(38, 105, 127));
+    draw_circle(gui_width * 0.18 + sin(background_time * 0.4) * 60,
+        gui_height * 0.28 + cos(background_time * 0.3) * 40, 125, false);
+    draw_set_color(make_color_rgb(71, 105, 87));
+    draw_circle(gui_width * 0.82 + cos(background_time * 0.35) * 48,
+        gui_height * 0.70 + sin(background_time * 0.27) * 32, 110, false);
+
     for (var i = 0; i < 72; i += 1) {
         var star_x = (i * 197 + i * i * 31 + 83) % gui_width;
-        var star_y = (i * 113 + i * i * 17 + 47) % gui_height;
-        draw_set_alpha(0.35 + (i % 4) * 0.15);
+        var star_y = (i * 113 + i * i * 17 + 47 + background_time * (7 + i mod 8)) % gui_height;
+        draw_set_alpha(0.22 + (i % 4) * 0.1 + abs(sin(background_time * 1.6 + i)) * 0.22);
         draw_set_color(c_white);
         draw_circle(star_x, star_y, 1 + (i % 3 == 0), false);
     }
 
     draw_set_alpha(1);
-    draw_set_color(make_color_rgb(179, 150, 112));
+    var board_glow = 0.5 + 0.5 * sin(background_time * 2);
+    draw_set_color(make_color_rgb(
+        150 + 29 * board_glow,
+        132 + 18 * board_glow,
+        100 + 12 * board_glow
+    ));
     draw_rectangle(board_left - 12, board_top - 12, board_left + board_width + 12, board_bottom + 12, false);
     draw_set_color(make_color_rgb(35, 70, 57));
     draw_rectangle(board_left, board_top, board_left + board_width, board_bottom, false);

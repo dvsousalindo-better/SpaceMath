@@ -1,0 +1,42 @@
+# Implementação de Cutscene — Campo de Meteoros
+
+Crie uma cutscene cinematográfica para o jogo, ambientada no espaço, seguindo esta sequência:
+
+### 1. Início da cena
+- O foguete aparece em destaque, ocupando uma parte considerável da tela.
+- O cenário apresenta o espaço profundo, com estrelas e sensação de movimento.
+- A câmera acompanha o foguete, mantendo-o como foco principal.
+
+### 2. Transição de escala
+- O foguete começa a diminuir gradualmente de tamanho na tela, como se estivesse se afastando da câmera.
+- Simultaneamente, a câmera amplia seu campo de visão (zoom out), revelando uma área muito maior do espaço.
+- A transição deve ser fluida, cinematográfica e sem cortes bruscos.
+- O foguete deve continuar na mesma trajetória, sem parecer que está simplesmente sendo redimensionado de maneira artificial.
+
+### 3. Revelação dos meteoros
+- À medida que a câmera se afasta, revela-se uma quantidade gigantesca de meteoros espalhados pelo espaço.
+- Os meteoros devem formar um verdadeiro mar, preenchendo grande parte do campo de visão.
+- Inicialmente, eles aparecem distantes, pequenos e numerosos.
+- Todos devem apresentar uma trajetória geral em direção ao foguete, criando a impressão de uma ameaça iminente.
+- Utilize diferenças de tamanho, distância, velocidade e profundidade para transmitir escala e perspectiva.
+- Os meteoros mais distantes devem parecer menores e menos detalhados; os mais próximos, maiores e mais definidos.
+
+### 4. Intensificação dramática
+- A câmera continua revelando a extensão do campo de meteoros.
+- Os meteoros apresentam movimentos independentes, mas convergem visualmente para a região do foguete.
+- O foguete permanece relativamente pequeno diante da quantidade de obstáculos.
+- A iluminação e os efeitos visuais devem reforçar a sensação de perigo e grandiosidade.
+
+### 5. Encerramento
+- Após revelar o campo de meteoros, a câmera estabiliza por um breve momento.
+- A cena deve deixar evidente que o foguete está prestes a atravessar uma região extremamente perigosa.
+- Em seguida, a cutscene termina e devolve o controle ao jogador, iniciando a sequência de desvio dos meteoros.
+
+### Requisitos técnicos
+- Implemente a cutscene utilizando os recursos disponíveis no GameMaker e GML.
+- Utilize uma máquina de estados ou uma sequência de etapas para controlar a animação.
+- Não altere permanentemente a escala real do foguete ou as configurações normais da câmera.
+- Ao terminar, restaure a câmera, a escala e os controles originais.
+- Evite criar centenas de objetos desnecessários: utilize uma abordagem eficiente para representar os meteoros, com gerenciamento de instâncias e otimização de desempenho.
+- A cutscene deve ser reproduzível e ter duração controlada.
+- Não modifique outras mecânicas do jogo que não sejam necessárias para essa implementação.

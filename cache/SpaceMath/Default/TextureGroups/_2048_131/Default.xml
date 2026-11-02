@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureGroup>
+  <texture scale="1" mipsToGenerate="0" texwidth="1024" texheight="1024">default_0.bz2</texture>
+  <tpe x="0" y="2" tpage="default_0.bz2">fnt_ui_title_SpaceMath_fnt_ui_title.tpe</tpe>
+  <tpe x="2" y="518" tpage="default_0.bz2">fnt_ui_SpaceMath_fnt_ui.tpe</tpe>
+</TextureGroup>

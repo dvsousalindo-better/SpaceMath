@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_flight_start_run",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_flight_start_run",
+  "parent":{
+    "name":"SpaceMath",
+    "path":"SpaceMath.yyp",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
