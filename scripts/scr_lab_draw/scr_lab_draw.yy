@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_lab_draw",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_lab_draw",
+  "parent":{
+    "name":"SpaceMath",
+    "path":"SpaceMath.yyp",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

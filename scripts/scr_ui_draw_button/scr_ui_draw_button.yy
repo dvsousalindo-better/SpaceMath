@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_ui_draw_button",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_ui_draw_button",
+  "parent":{
+    "name":"SpaceMath",
+    "path":"SpaceMath.yyp",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

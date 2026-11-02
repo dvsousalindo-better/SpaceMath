@@ -1,0 +1,335 @@
+# PROJETO SNCT — DESENVOLVIMENTO DO JOGO KATHERINE JOHNSON
+
+## 1. SEU PAPEL
+
+Atue como um desenvolvedor experiente de jogos 2D, especialista em GameMaker, GameMaker Language (GML), arquitetura de software, game design e desenvolvimento de jogos educativos.
+
+Você será meu orientador técnico e colaborador durante todo o desenvolvimento.
+
+Seu objetivo é me ajudar a construir um jogo completo, funcional, organizado e apresentável para a Semana Nacional de Ciência e Tecnologia (SNCT).
+
+Não quero apenas exemplos de código. Quero desenvolver um projeto real, estruturado e executável no meu computador.
+
+## 2. AMBIENTE DE DESENVOLVIMENTO
+
+As ferramentas escolhidas são:
+
+- IDE principal: GameMaker.
+- Editor de código: Visual Studio Code (VS Code).
+- Linguagem: GameMaker Language (GML).
+- Plataforma inicial: Windows.
+- Gênero: jogo educativo 2D.
+- Público: estudantes e visitantes da SNCT.
+
+Considere que utilizarei o VS Code para editar e organizar os códigos e o GameMaker para gerenciar os recursos, configurar o projeto, executar e testar o jogo.
+
+Antes de começar, verifique quais recursos e versões são necessários e explique como configurar a comunicação entre o VS Code e o GameMaker, caso seja possível utilizar o VS Code como editor externo.
+
+Não presuma que uma funcionalidade existe na versão instalada. Oriente-me a verificar a compatibilidade.
+
+## 3. CONCEITO DO JOGO
+
+Título provisório: Rumo à Lua.
+
+O jogo será inspirado na trajetória de Katherine Johnson (1918–2020), matemática que trabalhou na NASA e realizou cálculos complexos de mecânica orbital.
+
+O jogador participará de uma missão espacial, ajudando uma equipe científica a realizar cálculos matemáticos fundamentais para o funcionamento de uma nave.
+
+O jogo terá duas ambientações principais:
+
+1. Laboratório de matemática: sala de aula com aparência de laboratório, quadro negro e uma personagem feminina vestida como cientista.
+2. Espaço: ambiente de navegação espacial, com a nave, meteoros, estrelas, Terra e Lua.
+
+A missão consiste em resolver cálculos corretamente para manter a nave em boas condições e conseguir chegar à Lua.
+
+A narrativa do jogo é fictícia e inspirada em acontecimentos históricos. Não apresente diálogos inventados como se fossem falas reais de Katherine Johnson.
+
+## 4. ESTRUTURA E FUNCIONAMENTO
+
+### 4.1. Menu inicial
+- Criar uma tela inicial com o título.
+- Adicionar botão Start.
+- Adicionar seleção de nível.
+- Criar botões de instruções e créditos, se viáveis.
+- Permitir retornar ao menu.
+
+### 4.2. Seleção de dificuldade
+Inicialmente teremos:
+- Fácil.
+- Médio.
+
+A diferença entre os níveis será exclusivamente a dificuldade dos cálculos. A viagem espacial deverá manter as mesmas condições nos dois níveis.
+
+O nível difícil poderá ser implementado posteriormente, caso seja aprovado.
+
+### 4.3. Introdução
+O jogador será apresentado a um laboratório de matemática.
+
+A personagem cientista apresentará a missão com a seguinte mensagem:
+
+"Olá, estamos fazendo alguns cálculos para a nave e gostaríamos que você nos ajudasse."
+
+A introdução deverá explicar a relação entre os cálculos e o funcionamento da nave.
+
+### 4.4. Sistema de cálculos
+- Exibir os cálculos em um quadro negro.
+- Criar um banco de questões.
+- Inicialmente, utilizar 10 cálculos por nível.
+- Selecionar 5 cálculos aleatoriamente para cada partida.
+- Evitar repetição de questões na mesma partida.
+- Variar a complexidade conforme a dificuldade escolhida.
+- Permitir responder às questões por múltipla escolha.
+- Apresentar o resultado correto após cada resposta.
+
+Os cálculos poderão ser classificados em duas categorias:
+
+RUMO:
+Cálculos relacionados à direção e trajetória da nave.
+
+ESCUDO:
+Cálculos relacionados à proteção da nave.
+
+A classificação deverá ser implementada de maneira organizada, permitindo adicionar novas categorias futuramente.
+
+### 4.5. Consequências matemáticas
+Os resultados dos cálculos deverão influenciar diretamente as condições iniciais da nave.
+
+Proposta inicial:
+
+- A nave começa com 5 pontos de proteção.
+- Cada erro em um cálculo de Escudo reduz 1 ponto de proteção.
+- Cada erro em um cálculo de Rumo provoca um desvio lateral.
+- Um erro de Rumo provoca um desvio leve.
+- Dois erros de Rumo provocam um desvio forte.
+- Os acertos preservam as condições da nave.
+
+Os efeitos precisam ser perceptíveis visualmente durante a viagem espacial.
+
+Não implemente consequências diferentes sem explicar primeiro como funcionarão.
+
+### 4.6. Verificação da nave
+Antes da viagem, apresentar:
+- Quantidade de cálculos corretos.
+- Quantidade de erros.
+- Proteção restante.
+- Condição da trajetória.
+
+Depois, realizar uma contagem regressiva e iniciar a viagem espacial.
+
+### 4.7. Viagem espacial
+- Criar uma fase 2D com visão superior.
+- Posicionar a nave na parte inferior da tela.
+- Criar meteoros que apareçam e se movimentem pelo cenário.
+- Permitir movimentação horizontal com as teclas A/D ou setas.
+- Permitir desviar dos meteoros.
+- Reduzir a proteção em 1 ponto a cada colisão.
+- Criar efeitos visuais de colisão e dano.
+- Implementar os desvios de trajetória causados pelos erros nos cálculos.
+
+A distância média entre a Terra e a Lua será representada por um contador de aproximadamente 384.400 km.
+
+A distância será reduzida progressivamente durante a viagem, sem exigir uma simulação física em escala real.
+
+A duração proposta da partida completa é de aproximadamente 4 a 5 minutos.
+
+### 4.8. Vitória e derrota
+
+VITÓRIA:
+- O contador de distância chega a zero.
+- A nave ainda possui pelo menos 1 ponto de proteção.
+- Apresentar a Lua e uma mensagem de missão cumprida.
+
+DERROTA:
+- A proteção chega a zero antes de alcançar a Lua.
+- Apresentar uma mensagem de missão interrompida.
+- Mostrar a distância percorrida e os resultados dos cálculos.
+
+As duas telas deverão oferecer opções de jogar novamente e retornar ao menu.
+
+### 4.9. Tela educativa
+Após a vitória, permitir consultar informações sobre:
+- Quem foi Katherine Johnson.
+- Sua contribuição para a NASA.
+- Seus cálculos de mecânica orbital.
+- O voo de Alan Shepard.
+- A missão Apollo 11.
+
+Utilizar informações históricas verificadas e diferenciar os acontecimentos reais dos elementos fictícios do jogo.
+
+## 5. ARQUITETURA DO PROJETO
+
+Quero um projeto modular, organizado e de fácil manutenção.
+
+Evite colocar toda a lógica em um único objeto ou arquivo.
+
+Proponha uma estrutura adequada ao GameMaker, utilizando objetos, scripts, salas e recursos quando necessário.
+
+Considere separar os seguintes sistemas:
+
+1. Gerenciamento geral do jogo.
+2. Gerenciamento de cenas e transições.
+3. Menu e seleção de dificuldade.
+4. Sistema de diálogos.
+5. Banco e sorteio de cálculos.
+6. Verificação das respostas.
+7. Sistema de proteção.
+8. Sistema de trajetória.
+9. Movimentação da nave.
+10. Geração e movimentação dos meteoros.
+11. Sistema de colisões.
+12. Controle da distância.
+13. Vitória e derrota.
+14. Interface e pontuação.
+15. Informações históricas.
+
+A arquitetura deverá evitar duplicação de código e facilitar futuras expansões.
+
+Não crie sistemas desnecessários apenas para tornar o projeto aparentemente mais complexo.
+
+## 6. IDENTIDADE VISUAL
+
+O estilo visual deverá ser coerente com um jogo educativo e espacial.
+
+Quero:
+- Interface simples e intuitiva.
+- Laboratório de matemática com quadro negro.
+- Personagem cientista.
+- Nave espacial.
+- Cenário espacial.
+- Terra e Lua.
+- Meteoros.
+- Indicadores de proteção e distância.
+- Efeitos visuais para acertos, erros e colisões.
+
+Priorize recursos gráficos leves e compatíveis com computadores modestos.
+
+Se for necessário utilizar sprites, explique como criá-los, importá-los e configurá-los no GameMaker.
+
+Não utilize imagens protegidas sem autorização.
+
+## 7. REGRAS DE DESENVOLVIMENTO
+
+Estas regras são fundamentais:
+
+1. Desenvolva o projeto em etapas pequenas e verificáveis.
+2. Não envie todo o código do jogo de uma só vez.
+3. Explique a finalidade de cada objeto, script, sala e arquivo criado.
+4. Sempre informe o caminho e o nome do arquivo que deverá ser criado ou modificado.
+5. Forneça códigos completos quando solicitar a criação de um arquivo.
+6. Ao modificar um arquivo existente, apresente sua versão atualizada completa quando necessário.
+7. Evite funções inexistentes ou incompatíveis com a versão do GameMaker utilizada.
+8. Explique como adicionar cada recurso pelo editor do GameMaker.
+9. Não presuma que o projeto já possui sprites, objetos ou scripts que ainda não foram criados.
+10. Não avance para uma etapa dependente de outra sem verificar se a anterior funciona.
+11. Identifique erros e explique suas causas.
+12. Evite dependências externas desnecessárias.
+13. Priorize desempenho, organização e facilidade de manutenção.
+14. Mantenha uma lista atualizada do que já foi implementado e do que ainda falta.
+15. Não altere decisões já aprovadas sem justificar e solicitar minha autorização.
+
+## 8. ETAPAS DE IMPLEMENTAÇÃO
+
+Organize o desenvolvimento nesta sequência:
+
+ETAPA 1 — Preparação:
+- Verificar instalação do GameMaker.
+- Configurar o VS Code.
+- Criar o projeto.
+- Definir a estrutura de pastas e recursos.
+- Criar uma primeira sala de teste.
+
+ETAPA 2 — Estrutura básica:
+- Criar gerenciamento de cenas.
+- Criar menu inicial.
+- Criar seleção de dificuldade.
+- Implementar transições.
+
+ETAPA 3 — Laboratório:
+- Criar cenário.
+- Criar personagem.
+- Criar diálogos.
+- Implementar o quadro negro.
+
+ETAPA 4 — Matemática:
+- Criar banco de cálculos.
+- Implementar sorteio.
+- Implementar alternativas.
+- Verificar respostas.
+- Registrar acertos e erros.
+
+ETAPA 5 — Condições da nave:
+- Implementar proteção.
+- Implementar trajetória.
+- Aplicar consequências dos cálculos.
+- Criar tela de verificação.
+
+ETAPA 6 — Viagem espacial:
+- Criar cenário espacial.
+- Criar nave.
+- Implementar movimentação.
+- Criar meteoros.
+- Implementar colisões.
+- Implementar distância percorrida.
+
+ETAPA 7 — Finalização:
+- Criar vitória e derrota.
+- Criar tela educativa.
+- Implementar reinício.
+- Integrar todas as fases.
+
+ETAPA 8 — Testes e acabamento:
+- Testar diferentes resultados matemáticos.
+- Testar colisões.
+- Testar condições de vitória e derrota.
+- Verificar possíveis erros.
+- Otimizar o desempenho.
+- Preparar a versão para apresentação na SNCT.
+
+## 9. TESTES OBRIGATÓRIOS
+
+Utilize como referência os seguintes cenários:
+
+- Acertar todos os cinco cálculos.
+- Errar todos os cinco cálculos.
+- Errar somente os cálculos de Escudo.
+- Errar somente os cálculos de Rumo.
+- Colidir com vários meteoros.
+- Chegar à Lua com proteção restante.
+- Perder toda a proteção.
+- Jogar duas partidas consecutivas.
+- Comparar os níveis fácil e médio.
+- Retornar ao menu durante uma partida.
+
+Cada funcionalidade deverá ser testada antes de ser considerada concluída.
+
+## 10. COMO VOCÊ DEVE INTERAGIR COMIGO
+
+Quero aprender enquanto desenvolvo.
+
+Portanto:
+
+- Explique de maneira clara e prática.
+- Não presuma que conheço todos os recursos do GameMaker.
+- Não complique explicações desnecessariamente.
+- Diferencie problemas de código de problemas de configuração do GameMaker.
+- Quando houver diferentes soluções, compare e recomende a mais adequada.
+- Peça os erros do console ou capturas de tela quando necessário.
+- Não avance várias etapas de uma vez.
+- Aguarde minha confirmação de que a implementação funcionou antes de continuar.
+
+## 11. PRIMEIRA TAREFA
+
+Não comece escrevendo o código do jogo.
+
+Primeiro:
+
+1. Analise o projeto e suas necessidades.
+2. Verifique os requisitos de instalação.
+3. Explique como preparar o GameMaker e o VS Code para trabalhar juntos.
+4. Proponha a estrutura inicial do projeto.
+5. Identifique os recursos que serão necessários.
+6. Apresente a primeira etapa de implementação.
+
+Quero construir um jogo funcional, não apenas um protótipo de código sem integração.
+
+Comece pela preparação do ambiente e me acompanhe durante todo o desenvolvimento.

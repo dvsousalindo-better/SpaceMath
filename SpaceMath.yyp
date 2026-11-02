@@ -1,33 +1,115 @@
 {
-  "$GMProject":"v1",
-  "%Name":"SpaceMath",
-  "AudioGroups":[
-    {"$GMAudioGroup":"v1","%Name":"audiogroup_default","exportDir":"","name":"audiogroup_default","resourceType":"GMAudioGroup","resourceVersion":"2.0","targets":-1,},
+  "$GMProject": "v1",
+  "%Name": "SpaceMath",
+  "AudioGroups": [
+    {
+      "$GMAudioGroup": "v1",
+      "%Name": "audiogroup_default",
+      "exportDir": "",
+      "name": "audiogroup_default",
+      "resourceType": "GMAudioGroup",
+      "resourceVersion": "2.0",
+      "targets": -1,
+    }
   ],
-  "configs":{
-    "children":[],
-    "name":"Default",
+  "configs": {
+    "children": [],
+    "name": "Default",
   },
-  "defaultScriptType":0,
-  "Folders":[],
-  "ForcedPrefabProjectReferences":[],
-  "IncludedFiles":[],
-  "isEcma":false,
-  "LibraryEmitters":[],
-  "MetaData":{
-    "IDEVersion":"2026.0.0.16",
+  "defaultScriptType": 0,
+  "Folders": [],
+  "ForcedPrefabProjectReferences": [],
+  "IncludedFiles": [],
+  "isEcma": false,
+  "LibraryEmitters": [],
+  "MetaData": {
+    "IDEVersion": "2026.0.0.16",
   },
-  "name":"SpaceMath",
-  "resources":[
-    {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
+  "name": "SpaceMath",
+  "resources": [
+    {
+      "id": {
+        "name": "fnt_ui_title",
+        "path": "fonts/fnt_ui_title/fnt_ui_title.yy",
+      }
+    },
+    {
+      "id": {
+        "name": "fnt_ui",
+        "path": "fonts/fnt_ui/fnt_ui.yy",
+      }
+    },
+    {
+      "id": {
+        "name": "obj_scene_manager",
+        "path": "objects/obj_scene_manager/obj_scene_manager.yy",
+      }
+    },
+    {
+      "id": {
+        "name": "Room1",
+        "path": "rooms/Room1/Room1.yy",
+      }
+    },
+    {
+      "id": {
+        "name": "scr_ui_draw_button",
+        "path": "scripts/scr_ui_draw_button/scr_ui_draw_button.yy",
+      }
+    },
+    {
+      "id": {
+        "name": "scr_lab_draw",
+        "path": "scripts/scr_lab_draw/scr_lab_draw.yy",
+      }
+    },
+    {
+      "id": {
+        "name": "scr_math_start_run",
+        "path": "scripts/scr_math_start_run/scr_math_start_run.yy",
+      }
+    },
+    {
+      "id": {
+        "name": "scr_math_draw",
+        "path": "scripts/scr_math_draw/scr_math_draw.yy",
+      }
+    },
+    {
+      "id": {
+        "name": "scr_math_prepare_flight",
+        "path": "scripts/scr_math_prepare_flight/scr_math_prepare_flight.yy",
+      }
+    },
   ],
-  "resourceType":"GMProject",
-  "resourceVersion":"2.0",
-  "RoomOrderNodes":[
-    {"roomId":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
+  "resourceType": "GMProject",
+  "resourceVersion": "2.0",
+  "RoomOrderNodes": [
+    {
+      "roomId": {
+        "name": "Room1",
+        "path": "rooms/Room1/Room1.yy",
+      }
+    },
   ],
-  "templateType":"game",
-  "TextureGroups":[
-    {"$GMTextureGroup":"","%Name":"Default","autocrop":true,"border":2,"compressFormat":"bz2","customOptions":"","directory":"","groupParent":null,"isScaled":true,"loadType":"default","mipsToGenerate":0,"name":"Default","resourceType":"GMTextureGroup","resourceVersion":"2.0","targets":-1,},
+  "templateType": "game",
+  "TextureGroups": [
+    {
+      "$GMTextureGroup": "",
+      "%Name": "Default",
+      "autocrop": true,
+      "border": 2,
+      "compressFormat": "bz2",
+      "customOptions": "",
+      "directory": "",
+      "groupParent": null,
+      "isScaled": true,
+      "loadType": "default",
+      "mipsToGenerate": 0,
+      "name": "Default",
+      "resourceType": "GMTextureGroup",
+      "resourceVersion": "2.0",
+      "targets": -1,
+    }
   ],
 }
